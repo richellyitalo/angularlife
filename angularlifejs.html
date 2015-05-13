@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="e	n">
+	<head>
+		<meta charset="UTF-8">
+		<title>Angular Life JS</title>
+		<link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/angularlife.css" />
+
+		<script type="text/javascript" src="assets/vendor/angular.js"></script>
+		<script type="text/javascript" src="assets/js/angularlife.js"></script>
+	</head>
+	<body ng-app="angularlife" ng-controller="LifeCtrl">
+
+		<div class="container" style="margin-top: 15px">
+
+			<p>
+				<span ng-repeat="(rowKey, rowValue) in a.itemsRow()"> <strong ng-repeat="( columnKey, columnValue ) in a.itemsColumn( rowKey ) track by $index"><span class="cube" ng-class="{filled: columnValue, blank: ! columnValue}" ng-click="a.morphBlock( rowKey, columnKey )"></span>
+						<br ng-if="a.isLastColumn( rowKey, columnKey )" /></strong> 
+				</span>
+			</p>
+
+			<p>
+				<button type="button" class="btn btn-default" ng-click="a.buildGrade()">Construir grade</button>
+
+				<button type="button" class="btn" ng-class="{'btn-primary': !a.play, 'btn-danger': a.play}" ng-click="a.startSequence()">{{! a.play ? 'Iniciar Sequência' : 'Pausar Sequência' }}</button>
+			</p>
+		</div>
+
+	</body>
+</html>
